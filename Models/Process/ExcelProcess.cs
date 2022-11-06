@@ -23,11 +23,11 @@ namespace LeThuTrangBTH2.Models.Process
                 string columnName = cell.Text.Trim();
                 if (cell.Start.Column != currentColumn)
                 {
-                    columnNames.Add("Header_" + currentColumn);
+                    clumnNames.Add("Header_" + currentColumn);
                     dt.Columns.Add("Header_" + currentColumn);
                     currentColumn++;
                 }
-                columnNames.Add(columnName);
+                clumnNames.Add(columnName);
                 int occurrences = columnName.Count(x =>x.Equals(columnName));
                 if (occurrences > 1)
                 {

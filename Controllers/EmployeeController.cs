@@ -73,7 +73,7 @@ namespace LeThuTrangBTH2.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(nv.EmpID))
+                    if (!EmpExists(nv.EmpID))
                     {
                         return NotFound();
                     }
@@ -86,6 +86,12 @@ namespace LeThuTrangBTH2.Controllers
             }
             return View(nv);
         }
+
+        private bool EmpExists(string empID)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -157,9 +163,5 @@ namespace LeThuTrangBTH2.Controllers
             return View();
         }
 
-        private bool EmployeeExists(string id)
-        {
-            return _context.Employees.Any(e => e.EmpID == id);
-        }
     }
 }

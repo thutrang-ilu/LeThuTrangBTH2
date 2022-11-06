@@ -18,11 +18,7 @@ namespace LeThuTrangBTH2.Controllers
         {
             return View(await _context.Employees.ToListAsync());
         }
-        public bool EmployeeExists(string id)
-        {
-            return _context.Employee.Any(e => e.EmpID == id);
-        }
-
+      
         /*public async Task<IActionResult> Index()
         {
             var epl = await _context.Employees.ToListAsync();
@@ -134,7 +130,7 @@ namespace LeThuTrangBTH2.Controllers
                 else
                 {
                     var FileName = DateTime.Now.ToShortTimeString() + fileExtension;
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", fileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", FileName);
                     var fileLocation = new FileInfo(filePath).ToString();
                     using (var stream = new FileStream (filePath, FileMode.Create))
                     {
@@ -152,7 +148,7 @@ namespace LeThuTrangBTH2.Controllers
                             emp.EmpName = dt.Rows[i][1].ToString();
                             emp.Address = dt.Rows[i][2].ToString();
                             // add object to Context
-                            _context.Employee.Add(emp);
+                            _context.Employees.Add(emp);
                         }
                         //save to database 
                         await _context.SaveChangesAsync();
@@ -161,6 +157,11 @@ namespace LeThuTrangBTH2.Controllers
                 }
             }
             return View();
+        }
+
+        public bool EmployeeExists(string id)
+        {
+            return _context.Employees.Any(e => e.EmpID == id);
         }
 
     }

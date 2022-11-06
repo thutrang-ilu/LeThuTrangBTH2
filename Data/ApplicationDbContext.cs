@@ -10,8 +10,7 @@ namespace LeThuTrangBTH2.Data
         }
         public DbSet<Student> Students { get; set;}
         public DbSet<Person> Persons { get; set;}
-        public DbSet<LeThuTrangBTH2.Models.Employee> Employees { get; set;}
+        public DbSet<Employee> Employees { get; set;}
         public DbSet<Customer> Customers { get; set;}
-        public object Employee { get; internal set; }
     }
 }
